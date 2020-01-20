@@ -8,8 +8,10 @@
     <header>Search for city:</header><br>
     <div id="Searchbar">
         
-        <textarea data-weather="" name="search" id="city" cols="30" rows="2" ></textarea>
-            <button id="searchbutton">Search</button>
+        <textarea data-weather="" name="search" id="city" cols="30" rows="1" ></textarea>
+        <form>   
+            <button type="submit" id="searchbutton">Search</button> 
+        </form> 
     </div>
         
         <div id="searchHistory" class="containerHistory">
@@ -27,8 +29,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
 
-    $("button").on("click", function() {
-        var weather = (this).attr("data-weather");
+    $("button").on("click", function(event) {
+        
+        event.preventDefault()
+        var weather = $(this).attr("data-weather");
         var queryURL = "api.openweathermap.org/data/2.5/search?q=" +
         weather + "&api_key=042f8dc68822149a937e95a8743d8066";
 
