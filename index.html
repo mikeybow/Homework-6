@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Weather API</title>
+  </head>
+  <body>
+    <header>Search for city:</header><br>
+    <div id="Searchbar">
+        
+        <textarea data-weather="" name="search" id="city" cols="30" rows="2" ></textarea>
+            <button id="searchbutton">Search</button>
+    </div>
+        
+        <div id="searchHistory" class="containerHistory">
+            <h1>Previous Searchs</h1>
+        </div>
+
+        <div id="weather-appears-here">
+
+        </div>
+
+        <div id="5-day-forcast-appears-here">
+
+        </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    $("button").on("click", function() {
+        var weather = (this).attr("data-weather");
+        var queryURL = "api.openweathermap.org/data/2.5/search?q=" +
+        weather + "&api_key=042f8dc68822149a937e95a8743d8066";
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+
+        .then(function(response){
+            var results = response.data;
+        })
+    })
+
+     
+
+    </script>
+
+  </body>
+</html>
