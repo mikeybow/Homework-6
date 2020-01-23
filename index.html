@@ -19,11 +19,11 @@
         </div>
 
         <div id="weather">
-
+            <h2>Current weather: </h2>
         </div>
-        <h2>Forecast: </h2>
+        
         <div id="forecast">
-
+            <h2>Forecast: </h2>
         </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -48,19 +48,30 @@
             var forecast = [response.list[0], response.list[8], response.list[16], response.list[24], response.list[32]];
             for(let i = 0; i < forecast.length; i++) {
                 var day = $("<h3>").text("Day " + i + ":");
-                var main = $("<p>").text("Weather: " + forecast[i].weather[0].description);
+                var weatherdes = $("<p>").text("Weather: " + forecast[i].weather[0].description);
                 var clouds = $("<p>").text("Clouds: " + forecast[i].clouds.all);
+                var temp = $("<p>").text("Temp: " + forecast[i].main.temp_kf);
+                var humidity = $("<p>").text("Humidity: " + forecast[i].main.humidity);
 
-                forecastDiv.append(day).append(main).append(clouds);
+                forecastDiv.append(day).append(weatherdes).append(clouds).append(temp).append(humidity);
 
                 $("#forecast").append(forecastDiv);
-            }                
-        })
-    })
+            } 
 
-     
+            var currentWeather = $("#city").val().trim();
+            var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" +
+            currentWeather + "&appid=042f8dc68822149a937e95a8743d8066";
 
-    </script>
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+            
+
+        });
+    });
+
+     </script>
 
   </body>
 </html>
