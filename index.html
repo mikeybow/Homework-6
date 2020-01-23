@@ -33,10 +33,13 @@
     $("button").on("click", function(event) {
         
         event.preventDefault()
+
         var weather = $("#city").val().trim();
+
         var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" +
         weather + "&appid=042f8dc68822149a937e95a8743d8066";
         console.log(weather);
+
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -46,21 +49,30 @@
             console.log(response);
             
             var forecastDiv = $("<div>"); 
-            var forecast = [response.list[0], response.list[8], response.list[16], response.list[24], response.list[32]];
-            for(let i = 0; i < forecast.length; i++) {
-                var day = $("<h3>").text("Day " + i + ":");
-                var weatherdes = $("<p>").text("Weather: " + forecast[i].weather[0].description);
-                var clouds = $("<p>").text("Clouds: " + forecast[i].clouds.all);
-                var temp = $("<p>").text("Temp: " + forecast[i].main.temp_kf);
-                var humidity = $("<p>").text("Humidity: " + forecast[i].main.humidity);
-                var winds = $("<p>").text("Wind Speed: " + forecast[i].wind.speed);
 
-                forecastDiv.append(day).append(weatherdes).append(clouds).append(temp).append(humidity).append(winds);
+                var forecast = [response.list[0], response.list[8], response.list[16], response.list[24], response.list[32]];
+
+            for(let i = 0; i < forecast.length; i++) {
+
+                var day = $("<h3>").text("Day " + i + ":");
+                
+                    var weatherdes = $("<p>").text("Weather: " + forecast[i].weather[0].description);
+                
+                        var clouds = $("<p>").text("Clouds: " + forecast[i].clouds.all);
+                
+                            var temp = $("<p>").text("Temp: " + forecast[i].main.temp_kf);
+                
+                                var humidity = $("<p>").text("Humidity: " + forecast[i].main.humidity);
+                
+                                    var winds = $("<p>").text("Wind Speed: " + forecast[i].wind.speed);
+
+                                        forecastDiv.append(day).append(weatherdes).append(clouds).append(temp).append(humidity).append(winds);
 
                 $("#forecast").append(forecastDiv);
             } 
 
             var currentWeather = $("#city").val().trim();
+
             var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" +
             currentWeather + "&appid=042f8dc68822149a937e95a8743d8066";
 
@@ -76,12 +88,18 @@
                     console.log(currentWeather);
 
                 for(let i = 0; i < currentWeather.length; i++) {
+
                     var date = $("<h1>").text("Current Weather" + ":");
-                    var weathermain = $("<p>").text("Weather: " + currentWeather[i].weather[0].description);
-                    var clouds = $("<p>").text("Clouds: " + currentWeather[i].clouds.all);
-                    var temp = $("<p>").text("Temp: " + currentWeather[i].main.temp);
-                    var humidity = $("<p>").text("Humidity: " + currentWeather[i].main.humidity);
-                    var winds = $("<p>").text("Wind Speed: " + currentWeather[i].wind.speed);
+
+                        var weathermain = $("<p>").text("Weather: " + currentWeather[i].weather[0].description);
+
+                            var clouds = $("<p>").text("Clouds: " + currentWeather[i].clouds.all);
+
+                                var temp = $("<p>").text("Temp: " + currentWeather[i].main.temp);
+
+                                    var humidity = $("<p>").text("Humidity: " + currentWeather[i].main.humidity);
+
+                                        var winds = $("<p>").text("Wind Speed: " + currentWeather[i].wind.speed);
 
                     currentDiv.append(date).append(weathermain).append(clouds).append(temp).append(humidity).append(winds);
 
