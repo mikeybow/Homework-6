@@ -19,7 +19,7 @@
         </div>
 
         <div id="weather">
-            <h2>Current weather: </h2>
+            <h2 id="currentDate">Current Date: </h2>
         </div>
         
         <div id="forecast">
@@ -27,6 +27,7 @@
         </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/moment.min.js"></script>
     <script type="text/javascript">
 
     $("button").on("click", function(event) {
@@ -35,7 +36,7 @@
         var weather = $("#city").val().trim();
         var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" +
         weather + "&appid=042f8dc68822149a937e95a8743d8066";
-
+        console.log(weather);
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -66,7 +67,29 @@
                 url: queryURL,
                 method: "GET"
             })
-            
+
+            .then(function(response) {
+                console.log(response);
+                var currentDiv = $("<div>");
+                var currentWeather = [response]
+                    console.log(currentWeather);
+
+                for(let i = 0; i < currentWeather.length; i++) {
+                    var date = $("<h1>").text("Current Weather" + ":");
+                    var weathermain = $("<p>").text("Weather: " + currentWeather[i].weather[0].description);
+                    var clouds = $("<p>").text("Clouds: " + currentWeather[i].clouds.all);
+                    var temp = $("<p>").text("Temp: " + currentWeather[i].main.temp);
+                    var humidity = $("<p>").text("Humidity: " + currentWeather[i].main.humidity);
+
+                    currentDiv.append(date).append(weathermain).append(clouds).append(temp).append(humidity);
+
+                    $("#weather").append(currentDiv);
+                        console.log(currentDiv);
+                    console.log(weathermain);
+                }
+                let m = moment();
+                $("#currentDate").html(m.format("MM/DD/YYYY"));
+            })
 
         });
     });
