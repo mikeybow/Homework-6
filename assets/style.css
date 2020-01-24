@@ -1,0 +1,32 @@
+#Searchbar {
+    background-color: teal;
+}
+
+#weather {
+    float: right;
+    margin-right: 180px;
+    border-radius: 100px,;
+    border-style: solid;
+    border-color: black;
+    border-width: thin;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 25px;
+    position: relative;
+}
+
+#city {
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+header {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#searchbutton {
+    background-color: grey;
+    border-style: solid;
+    font-size: 15px;
+}

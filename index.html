@@ -3,27 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <title>Weather API</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
   </head>
   <body>
-    <header>Search for city:</header><br>
+    <header>Search for city:</header>
+    
     <div id="Searchbar">
         
         <form>   
             <input type="text" id="city" placeholder="Enter City"></input>
             <button type="submit" id="searchbutton">Search</button> 
         </form> 
+
     </div>
         
         <div id="searchHistory" class="containerHistory">
-            <h1>Previous Searchs</h1>
+            <h1>Previous Searchs: </h1>
         </div>
 
         <div id="weather">
             <h2 id="currentDate">Current Date: </h2>
+            <hr>
         </div>
         
         <div id="forecast">
             <h2>Forecast: </h2>
+            <hr>
         </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -109,7 +114,9 @@
                 }
                 let m = moment();
                 $("#currentDate").html(m.format("MM/DD/YYYY"));
-            })
+
+
+            });
 
         });
     });
