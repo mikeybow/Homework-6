@@ -1,5 +1,7 @@
 #Searchbar {
     background-color: teal;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #weather {
@@ -26,7 +28,18 @@ header {
 }
 
 #searchbutton {
-    background-color: grey;
+    background-color: blue;
     border-style: solid;
-    font-size: 15px;
+    font-size: 25px;
+    border-radius: 100px;
+}
+
+#forecast {
+    border-style: solid;
+    border-color: black;
+    float: left;
+    width: 87%;
+    border-width: thin;
+    padding-bottom: 300px;
+    margin-top: 30px;
 }
